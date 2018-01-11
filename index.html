@@ -12,7 +12,25 @@
    
 	    <!-- APP -->
 	    <div id="root">
+	    	
 	    	<h2>Welcome to {{ appName }}</h2>
+	    	<!-- <h2 v-text='unMas'></h2> -->
+	    	
+	    	<input v-model.lazy="query" placeholder="search..." v-on:keyup.enter="search">
+	    	<button type="submit" v-on:click.prevent="search">search</button>
+	    	<!-- <div>you are searching for ... {{query}} </div> -->
+
+	    	<br/>
+
+	    	<!-- <label><input type="checkbox" value="foo" v-model="checkbox_results">foo</label>
+	    	<label><input type="checkbox" value="bar" v-model="checkbox_results">bar</label>
+	    	<h3>checked: {{checkbox_results}} </h3>
+
+	    	<ul><li v-for="i in list"> {{i}} </li></li></ul>
+	    	<ul><li v-for="i in list2"> {{i}} </li></li></ul> -->
+	    	
+	    	<ul><li v-for="i in characters"> {{i}} </li></li></ul>
+
 	    </div>
    
 	    <!-- SCRIPTS -->
