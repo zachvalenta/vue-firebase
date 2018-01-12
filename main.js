@@ -2,12 +2,10 @@ var app = new Vue({
 	el: '#root',
 	data: {
 		appName: 'app',
-		unMas: 'testing v-text directive',
+
 		query: '',
-		checkbox_results: [],
-		list: ['one', '2', 'three', '42'],
-		list2: ['prop1', 'prop2'],
 		characters: [],
+		favorite_chars: [],
 	},
 	methods: {
 		search: function(){
@@ -30,6 +28,11 @@ var app = new Vue({
 			else {
 				alert("enter search query")
 			}
+		},
+		add_to_fav: function(li){
+			console.log(li);
+			this.favorite_chars.push(li);
+			console.log(this.favorite_chars)
 		}
 	}
 });
