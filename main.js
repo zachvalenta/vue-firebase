@@ -2,7 +2,6 @@ var app = new Vue({
 	el: '#root',
 	data: {
 		appName: 'app',
-
 		query: '',
 		characters: [],
 		favorite_chars: [],
@@ -32,6 +31,12 @@ var app = new Vue({
 		add_to_fav: function(li){
 			console.log(li);
 			this.favorite_chars.push(li);
+			console.log(this.favorite_chars)
+		},
+		rm_from_fav: function(li){
+			console.log(li);
+			var index = this.favorite_chars.indexOf(li);
+			this.favorite_chars.splice(index, 1);
 			console.log(this.favorite_chars)
 		}
 	}

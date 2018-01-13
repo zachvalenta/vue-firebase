@@ -26,6 +26,13 @@
       		    </li>
 			</ul>
 
+			<ul style="float: right">
+				 <li v-for="i in favorite_chars">
+			      <span> <button v-on:click="rm_from_fav(i)"> rm </button> </span>
+			      <a> {{i}} </a>
+      		    </li>
+			</ul>
+
 	    </div>
    
 	    <!-- SCRIPTS -->
