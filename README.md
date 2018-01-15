@@ -3,6 +3,11 @@ SUMMARY
 
 This simple Vue app persists to Firebase db. 
 
+HOW TO RUN
+-------------------------------
+
+just clone repo to local and open via file protocol
+
 STACK
 -------------------------------
 
