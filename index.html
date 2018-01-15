@@ -15,29 +15,34 @@
 	    	
 	    	<h2>Welcome to {{ appName }}</h2>
 	    	
-	    	<input v-model.lazy="query" placeholder="search..." v-on:keyup.enter="search">
-	    	<button type="submit" v-on:click.prevent="search">search</button>
+	    	<div>
+		    	<input v-model.lazy="query" placeholder="search..." v-on:keyup.enter="search">
+		    	<button type="submit" v-on:click.prevent="search">search</button>
+	    	</div>
 	    	
-	    	<!-- <div v-for="i in characters"> {{i}} </div> -->
-	    	<ul style="list-style: none;">
-			    <li v-for="i in characters">
-			      <span> <button v-on:click="add_to_fav(i)"> add </button> </span>
-			      <a> {{i}} </a>
-      		    </li>
-			</ul>
+	    	<div style="float: left">
+		    	<ul style="list-style: none;">
+				    <li v-for="i in characters">
+				      <span> <button v-on:click="add_to_fav(i)"> add </button> </span>
+				      <a> {{i}} </a>
+	      		    </li>
+				</ul>
+			</div>
 
-			<ul style="float: right">
-				 <li v-for="i in favorite_chars">
-			      <span> <button v-on:click="rm_from_fav(i)"> rm </button> </span>
-			      <a> {{i}} </a>
-      		    </li>
-			</ul>
+			<div style="float: right">
+				<ul>
+					 <li v-for="i in favorite_chars">
+				      <span> <button v-on:click="rm_from_fav(i)"> rm </button> </span>
+				      <a> {{i}} </a>
+	      		    </li>
+				</ul>
+			</div>
 
 	    </div>
    
+   		<!-- FIREBASE -->
 	    <script src="https://www.gstatic.com/firebasejs/4.8.2/firebase.js"></script>
 	    <script>
-
 	      // conf        
 	      var config = {
 	        apiKey: "AIzaSyDglJRO39VRp_T3p_C7SidsLcHj8LQJtSc",
@@ -47,33 +52,13 @@
 	        storageBucket: "vue-marvel.appspot.com",
 	        messagingSenderId: "171904914027"
 	      };
-	      
 	      firebase.initializeApp(config); //add conf to global 'firebase' obj
-	      var db = firebase.database().ref(); //ref
-	      
-	      // on() is event listener, which makes more since with other args like child_added
-	      // 'value' refers to value of node specified in conf
-	      // 'snap' is name of callback
-	      // 'snap' has other metadata, so need 'val()' to actually get JSON
-	      //db.on('value', snap => snap.val() );
-	      db.on('value', snap => {
-	        var favs = snap.val();
-	        console.log(favs);
-	        console.log(typeof favs);
-	        for(var key in favs) {
-	          var key = favs[key];
-	          console.log(key["name"]);
-	        }
-	      });
-
 	    </script>
    
-	    <!-- SCRIPTS -->
+	    <!-- VUE -->
 	    <script type="text/javascript" src="https://unpkg.com/vue"></script>
 	    <script type="text/javascript" src="https://unpkg.com/axios/dist/axios.min.js"></script>
 	    <script type="text/javascript" src="main.js"></script>
-
-
 
    	</body>
 
