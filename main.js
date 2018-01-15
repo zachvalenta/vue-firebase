@@ -1,7 +1,7 @@
 var app = new Vue({
 	el: '#root',
 	data: {
-		appName: 'app',
+		appName: 'zv basic Vue app',
 		query: '',
 		characters: [],
 		favorite_chars: [],
@@ -12,7 +12,7 @@ var app = new Vue({
 
     	var db = firebase.database().ref(); //ref
     	
-    	// on() is event listener, which makes more since with other args like child_added
+    	// on() is event listener, so anytime value changes method will fire
     	// 'value' refers to value of node specified in conf
     	// 'snap' is name of callback
     	db.on('value', snap => {
@@ -25,11 +25,9 @@ var app = new Vue({
     			return;
     		}
 
-    		/*have: constantly empty container and refill*/
-    		/*want: on DOM load, *one-time*, pull from Firebase*/ 
-    		//https://stackoverflow.com/questions/40714319/how-to-call-a-vue-js-function-on-page-load
-    		// https://vuejs.org/v2/api/#vm-once
+    		// Firebase once() would rm need for this
     		this.favorite_chars = [];
+    		
     		var fav_char_names = Object.values(favs);
     		for (var i = 0; i < fav_char_names.length; i++) {
     			console.log(fav_char_names[i]);
@@ -66,10 +64,25 @@ var app = new Vue({
 			});
 		},
 		rm_from_fav: function(li){
-			console.log(li);
-			var index = this.favorite_chars.indexOf(li);
-			this.favorite_chars.splice(index, 1);
-			console.log(this.favorite_chars)
+
+			console.log("item to rm: " + li);
+			var db = firebase.database().ref();
+
+    		db.once('value', function(snap){
+    			snap.forEach(function(item){
+    				
+    				var key = item.key;
+    				var val = item.val();
+    				console.log(`K: ${key} V: ${val}`);
+
+    				if(val == li){
+						console.log(`rm ${li}`);
+						db.child(key).remove(function(err){
+							if(err){console.log(`could not rm ${li}`);}
+						});
+    				}
+    			})
+    		});
 		}
 	}
 });
