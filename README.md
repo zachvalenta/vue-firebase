@@ -9,7 +9,7 @@ STACK
 __why Vue?__
 * relearning AngularJS neither fun nor valuable, Angular5 seemed like overkill, React learning curve too steep for a week (or at least a week of nights)
 * Vue seemed friendly, hews to web standards, in the spirit of jQuery
-* didn't want to bikesheed on issue with my local NPM install
+* didn't want to bikeshed on issue with my local NPM install
 
 __why Firebase?__
 * seemed cool!
@@ -27,7 +27,7 @@ CHALLENGES
 * __Vue__: learn new framework from scratch :)
 * __Firebase__ 
     + __versions__: piece together docs between versions 1, 2, 3; lot of examples use v1 and v2, so had to sift through some misinformation
-    + __management console when using CDN__: fair amount of magic button pushing (example: CDN config starter doesn't indicate how config variables derviced, 30 mins of Youtube until the "aha, click this button and then that button and this other button, in that order, to get your config")
+    + __management console when using CDN__: fair amount of magic button pushing (example: CDN config starter doesn't indicate how to dervive variables for config; 30 mins of Youtube until the "aha! click this button and then that button and this other button, in that order, to get your config")
 
 NEXT STEPS
 -------------------------------
