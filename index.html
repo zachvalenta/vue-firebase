@@ -35,10 +35,45 @@
 
 	    </div>
    
+	    <script src="https://www.gstatic.com/firebasejs/4.8.2/firebase.js"></script>
+	    <script>
+
+	      // conf        
+	      var config = {
+	        apiKey: "AIzaSyDglJRO39VRp_T3p_C7SidsLcHj8LQJtSc",
+	        authDomain: "vue-marvel.firebaseapp.com",
+	        databaseURL: "https://vue-marvel.firebaseio.com",
+	        projectId: "vue-marvel",
+	        storageBucket: "vue-marvel.appspot.com",
+	        messagingSenderId: "171904914027"
+	      };
+	      
+	      firebase.initializeApp(config); //add conf to global 'firebase' obj
+	      var db = firebase.database().ref(); //ref
+	      
+	      // on() is event listener, which makes more since with other args like child_added
+	      // 'value' refers to value of node specified in conf
+	      // 'snap' is name of callback
+	      // 'snap' has other metadata, so need 'val()' to actually get JSON
+	      //db.on('value', snap => snap.val() );
+	      db.on('value', snap => {
+	        var favs = snap.val();
+	        console.log(favs);
+	        console.log(typeof favs);
+	        for(var key in favs) {
+	          var key = favs[key];
+	          console.log(key["name"]);
+	        }
+	      });
+
+	    </script>
+   
 	    <!-- SCRIPTS -->
 	    <script type="text/javascript" src="https://unpkg.com/vue"></script>
 	    <script type="text/javascript" src="https://unpkg.com/axios/dist/axios.min.js"></script>
 	    <script type="text/javascript" src="main.js"></script>
+
+
 
    	</body>
 
