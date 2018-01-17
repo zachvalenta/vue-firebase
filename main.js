@@ -20,14 +20,14 @@ var app = new Vue({
     		// 'snap' has other metadata, so need 'val()' to actually get JSON
     		var favs = snap.val();
     		
+    		// Firebase once() would rm need for this
+    		this.favorite_chars = [];
+    		
     		if(favs === null){
     			console.log("no data");
     			return;
     		}
 
-    		// Firebase once() would rm need for this
-    		this.favorite_chars = [];
-    		
     		var fav_char_names = Object.values(favs);
     		for (var i = 0; i < fav_char_names.length; i++) {
     			console.log(fav_char_names[i]);
@@ -58,6 +58,12 @@ var app = new Vue({
 			}
 		},
 		add_to_fav: function(li){
+			
+			if(this.favorite_chars.includes(li)){
+				console.log(`already contains ${li}`);
+				return;
+			}
+
 			var db = firebase.database().ref();
 			db.push(li, function (err) {
 				if(err){console.log("couldn't push to Firebase");}
